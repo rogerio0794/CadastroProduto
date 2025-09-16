@@ -20,6 +20,7 @@
                 <th>Quantidade</th>
                 <th>Valor Total</th>
                 <th>Ações</th>
+                <tbody id="corpo"></tbody>
             </tr>            
         </table>
     </div>
@@ -69,7 +70,39 @@
             quantidades.push(parseInt(qtd.value))
             total.push( parseFloat(preco.value) * parseInt(qtd.value))
 
+            atualizarTabela()
 
+
+        }
+
+        function atualizarTabela() {
+
+            voltar()
+            let corpo = document.getElementById("corpo")
+            corpo.innerHTML = ""
+            for (let i = 0; i < nomes.length; i++) {
+                let linha = document.createElement("tr")
+                linha.innerHTML = `  
+                    <td>${nomes[i]}</td>
+                    <td>${precos[i]}</td>
+                    <td>${quantidades[i]}</td>
+                    <td>${total[i]}</td>
+                    <td><button onclick="excluir(${i})">Excluir</button></td>
+                `
+                corpo.appendChild(linha)
+
+            }
+        
+
+
+        }
+
+        function excluir(indice) {
+            nomes.splice(indice,1)
+            precos.splice(indice,1)
+            quantidades.splice(indice,1)
+            total.splice(indice,1)
+            atualizarTabela()
         }
 
       
