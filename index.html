@@ -24,7 +24,7 @@
         </table>
     </div>
 
-    <div id="cadastro">
+    <div id="cadastro" class="hidden">
 
         Nome: <input id="nome" type="text"> <br> <br>
         Preço: <input id="preco" type="number"> <br> <br>
@@ -38,6 +38,39 @@
    
    
    <script>
+
+        let nomes = []
+        let precos = []
+        let quantidades = []
+        let total = []
+
+        function cadastrar() {
+            document.getElementById("table").classList.add("hidden")
+
+            document.getElementById("cadastro").classList.remove("hidden")
+
+        }
+
+        function voltar() {
+
+            document.getElementById("table").classList.remove("hidden")
+
+            document.getElementById("cadastro").classList.add("hidden")
+
+        }
+
+        function salvar() {
+            let nome = document.getElementById("nome")
+            let preco = document.getElementById("preco")
+            let qtd = document.getElementById("qtd")
+
+            nomes.push(nome.value)
+            precos.push( parseFloat(preco.value))
+            quantidades.push(parseInt(qtd.value))
+            total.push( parseFloat(preco.value) * parseInt(qtd.value))
+
+
+        }
 
       
     </script>
